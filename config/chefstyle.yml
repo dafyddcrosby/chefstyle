@@ -43,7 +43,7 @@ Lint/DuplicateCaseCondition:
   Enabled: true
 Lint/DuplicateMethods:
   Enabled: true
-Lint/DuplicatedKey:
+Lint/DuplicateHashKey:
   Enabled: true
 Lint/EachWithObjectArgument:
   Enabled: true
@@ -60,7 +60,7 @@ Lint/EmptyWhen:
 Layout/EndAlignment:
   Enabled: true
   AutoCorrect: true
-Lint/EndInMethod:
+Style/EndBlock:
   Enabled: true
 Lint/EnsureReturn:
   Enabled: true
@@ -80,7 +80,7 @@ Lint/LiteralInInterpolation:
   Enabled: true
 Lint/Loop:
   Enabled: true
-Lint/MultipleCompare:
+Lint/MultipleComparison:
   Enabled: true
 Lint/NestedMethodDefinition:
   Enabled: true
@@ -104,13 +104,13 @@ Lint/ShadowedException:
   Enabled: true
 Lint/ShadowingOuterLocalVariable:
   Enabled: true
-Lint/StringConversionInInterpolation:
+Lint/RedundantStringCoercion:
   Enabled: true
 Lint/UnderscorePrefixedVariableName:
   Enabled: true
 Lint/UnifiedInteger:
   Enabled: true
-Lint/UnneededSplatExpansion:
+Lint/RedundantSplatExpansion:
   Enabled: true
 Lint/UnreachableCode:
   Enabled: true
@@ -120,7 +120,7 @@ Lint/UselessAccessModifier:
   Enabled: true
 Lint/UselessAssignment:
   Enabled: true
-Lint/UselessComparison:
+Lint/BinaryOperatorWithIdenticalOperands:
   Enabled: true
 Lint/UselessElseWithoutRescue:
   Enabled: true
@@ -142,14 +142,14 @@ Lint/UnusedMethodArgument:
   Enabled: false
 
 # We ignore Exceptions a lot
-Lint/HandleExceptions:
+Lint/SuppressedException:
   Enabled: false
 # We also decorate Exceptions a lot
 Lint/RescueException:
   Enabled: false
 
 # disabling this will make it easier to stage chefstyle rollouts
-Lint/UnneededCopDisableDirective:
+Lint/RedundantCopDisableDirective:
   Enabled: false
 
 #
@@ -193,15 +193,15 @@ Metrics/PerceivedComplexity:
 
 Layout/AccessModifierIndentation:
   Enabled: true
-Layout/AlignArguments:
+Layout/ArgumentAlignment:
   Enabled: true
   EnforcedStyle: with_fixed_indentation
-Layout/AlignParameters:
+Layout/ParameterAlignment:
   Enabled: true
   EnforcedStyle: with_fixed_indentation
 # the "ignore_implict" is here for keyword args in method calls which are
 # "implicit" hashes, and those should not be treated like normal hashes
-Layout/AlignHash:
+Layout/HashAlignment:
   Enabled: true
   EnforcedLastArgumentHashStyle: ignore_implicit
 Style/AndOr:
@@ -280,12 +280,12 @@ Style/IfUnlessModifierOfIfUnless:
   Enabled: true
 Style/IfWithSemicolon:
   Enabled: true
-Layout/IndentAssignment:
+Layout/AssignmentIndentation:
   Enabled: true
-Layout/IndentFirstArgument:
+Layout/FirstArgumentIndentation:
   EnforcedStyle: consistent
   Enabled: true
-Layout/IndentHeredoc:
+Layout/HeredocIndentation:
   Enabled: true
 Layout/IndentationConsistency:
   Enabled: true
@@ -454,7 +454,7 @@ Style/SymbolProc:
   Enabled: true
 Layout/IndentationStyle:
   Enabled: true
-Layout/TrailingBlankLines:
+Layout/TrailingEmptyLines:
   Enabled: true
 Style/TrailingCommaInArguments:
   Enabled: true
@@ -469,9 +469,9 @@ Style/TrailingUnderscoreVariable:
   Enabled: true
 Layout/TrailingWhitespace:
   Enabled: true
-Style/UnneededCapitalW:
+Style/RedundantCapitalW:
   Enabled: true
-Style/UnneededInterpolation:
+Style/RedundantInterpolation:
   Enabled: false # buggy: https://github.com/rubocop-hq/rubocop/issues/6099
 #Style/UnneededPercentQ:  # would like to enable this one but its buggy as of 0.35.1
 #  Enabled: true
@@ -540,7 +540,7 @@ Style/IfUnlessModifier:
   Enabled: false
 
 # Dan is -1 on this one: https://github.com/chef/chef/pull/4526#issuecomment-179950045
-Layout/IndentFirstHashElement:
+Layout/FirstHashElementIndentation:
   Enabled: false
 
 # This is overly aggressive and autofix broke stuff, would need to exclude classes
@@ -610,15 +610,11 @@ Naming/HeredocDelimiterNaming:
   Enabled: false
 Naming/PredicateName:
   Enabled: false
-Naming/UncommunicativeMethodParamName:
+Naming/MethodParameterName:
   Enabled: false
 Naming/MemoizedInstanceVariableName:
   Enabled: false
 Naming/VariableNumber:
-  Enabled: false
-
-# This breaks all kinds of specs in chef (i don't think it will ever quite work correctly)
-Style/BracesAroundHashParameters:
   Enabled: false
 
 # We almost never use format strings but this cop triggers on any string with "%{whatever}" in it and is 99% false positives
